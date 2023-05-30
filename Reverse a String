@@ -1,0 +1,16 @@
+class Reverse
+{
+    
+    public static String reverseWord(String str)
+    {   StringBuilder builder=new StringBuilder(str);
+        int n=str.length()-1;
+       for(int i=0;i<=n+1/2;i++){
+           char temp=builder.charAt(i);
+           builder.setCharAt(i,(char)builder.charAt(n));
+           builder.setCharAt(n,(char)temp);
+           n--;
+       }
+       str=builder.toString();
+       return str;
+    }
+}
