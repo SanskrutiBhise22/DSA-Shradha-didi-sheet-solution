@@ -1,0 +1,20 @@
+class Solution
+{
+    public long findMinDiff (ArrayList<Integer> a, int n, int m)
+    {  
+       
+       Collections.sort(a);
+       long currsum=a.get(m-1)-a.get(0);
+       long maxsum=currsum;
+       for(int i=1;i<a.size()-1;i++){
+           if(m>=n){
+               break;
+           }
+           currsum=a.get(m)-a.get(i);
+           maxsum=Math.min(currsum,maxsum);
+           m++;
+       }
+       return maxsum;
+    }
+}
+complexity: O(nlogn+n)
