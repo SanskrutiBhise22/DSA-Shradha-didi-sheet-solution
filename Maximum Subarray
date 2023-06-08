@@ -1,0 +1,38 @@
+class Solution {
+    public boolean checknegative(int nums[]){
+      int count=0;
+      for(int i=0;i<nums.length;i++){
+          if(nums[i]<0){
+              count++;
+          }
+      }
+      if(count==nums.length){
+          return true;
+      }
+      else{
+           return false;
+      }
+    }
+    public int maxSubArray(int[] nums) {
+        int sum=Integer.MIN_VALUE;
+        int currsum=0;
+        int maxsum=Integer.MIN_VALUE;
+        if(checknegative(nums)==true){
+            for(int k=0;k<nums.length;k++){
+               sum=Math.max(sum,nums[k]);
+            }
+           return sum;
+        }
+       else{
+            for(int i=0;i<nums.length;i++){
+               currsum=currsum+nums[i];
+               if(currsum<0){
+                 currsum=0;
+                }
+               maxsum=Math.max(currsum,maxsum);
+            }
+            return maxsum;
+       } 
+    }
+}
+time complexity:O(n)
