@@ -1,0 +1,27 @@
+class Solution {
+    public int trap(int[] height) {
+        int n=height.length;
+        //Calculate leftMax
+        int leftMax[]=new int[height.length];
+        leftMax[0]=height[0];
+        for(int i=1;i<height.length;i++){
+             leftMax[i]=Math.max(height[i],leftMax[i-1]);
+        }
+        // Calculate rightMax
+        int rightMax[]=new int[height.length];
+        rightMax[n-1]=height[n-1];
+        for(int k=n-2;k>=0;k--){
+            rightMax[k]=Math.max(height[k],rightMax[k+1]);
+        }
+        
+        // trappedWater=(waterHeight-lenghtofBlock)*widthofBlock here widthofBlock=1
+        int trappedWater=0;
+        for(int m=0;m<height.length;m++){
+            int waterHeight=Math.min(leftMax[m],rightMax[m]);
+            trappedWater+=(waterHeight-height[m]);
+        }
+        return trappedWater;
+
+    }
+}
+timecomplexity:O(n)
