@@ -1,0 +1,11 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int n=nums.length;
+        Arrays.sort(nums);
+        return nums[n-(k)];
+    }
+}
+timecomplexity: O(nlogn)                                          Note:Arrays.sort() timecomplexity=O(nlogn)
+
+for timecomplexity :O(n)
+you can simply use the linear complexity sorting algorithm  instead of  Arrays.sort(nums); in above code
