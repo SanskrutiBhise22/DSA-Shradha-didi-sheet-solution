@@ -1,0 +1,30 @@
+class Solution {
+    
+    public int[] productExceptSelf(int[] nums) {
+        int s[]=new int[nums.length];
+        //left product array
+        int left[]=new int[nums.length];
+        int lp=nums[0];
+        left[0]=nums[0];
+        for(int i=1;i<nums.length;i++){
+            lp*=nums[i];
+           left[i]=lp;
+        }
+        //right product array
+        int right[]=new int[nums.length];
+        int rp=nums[nums.length-1];
+        right[nums.length-1]=nums[nums.length-1];
+        for(int j=nums.length-2;j>=0;j--){
+            rp*=nums[j];
+           right[j]=rp;
+        }
+        s[0]=right[1];
+        s[nums.length-1]=left[nums.length-2];
+        for(int k=1;k<nums.length-1;k++){
+            s[k]=left[k-1]*right[k+1];
+        }
+        return s;
+
+    }
+}
+time complexity=O(n) space complexity=O(n)
