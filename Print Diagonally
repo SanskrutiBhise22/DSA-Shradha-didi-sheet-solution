@@ -1,0 +1,33 @@
+class Solution{
+    static ArrayList<Integer> downwardDiagonal(int N, int A[][])
+    {   
+        ArrayList<Integer> a=new ArrayList<Integer>();
+        int r=0,c=0;
+        for(c=0;c<N;c++){
+            int temp1=r;
+            int temp2=c;
+            while(r!=temp2 && c!=temp1 && r<N){
+                a.add(A[r][c]);
+                r++;c--;
+            }
+            a.add(A[r][c]);
+            c=r;
+            r=temp1;
+        }
+        c=N-1;
+        for(r=1;r<N;r++){
+            int temp1=r;
+            int temp2=c;
+            while(r!=temp2 && c!=temp1 && c>=0){
+                a.add(A[r][c]);
+                r++;c--;
+            }
+            a.add(A[r][c]);
+            c=r;
+            r=temp1;
+        }
+        return a;
+    }
+}
+time complexity = O(n^2)
+space complexity = O(n^2)
