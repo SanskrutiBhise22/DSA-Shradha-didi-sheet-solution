@@ -1,0 +1,39 @@
+class Solution
+{   
+    public int binarySearch(int arr[],int idx,int target){
+        int start=idx;
+        int end=arr.length-2;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(arr[mid]==target){
+                return 1;
+            }
+            else if(arr[mid]>target){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }
+        }
+        return -1;
+    }
+    public boolean findPair(int arr[], int size, int n)
+    {
+        Arrays.sort(arr);
+        int largest=arr[size-1];
+       for(int i=0;i<size-1;i++){
+           int add=arr[i]+n;
+           if(add==largest){
+               return true;
+           }
+           else if(add<largest){
+               if(binarySearch(arr,i+1,add)==1){
+                   return true;
+               }
+           }
+       }
+       return false;
+    }
+}
+time complexity = O(Llog(L))
+space complexity = O(1)
