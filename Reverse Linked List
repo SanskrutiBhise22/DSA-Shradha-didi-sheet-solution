@@ -1,0 +1,21 @@
+class Solution {
+    public static ListNode head1=null;
+    public ListNode helper(ListNode head,ListNode temp,ListNode prev){
+       if(temp==null){
+           head1=prev;
+           return prev;
+       }
+       ListNode target=helper(head,temp.next,temp);
+       target.next=prev;
+       if(target.next==null){
+           return head1;
+       }
+       return target.next;
+    }
+    public ListNode reverseList(ListNode head) {
+         head1=helper(head,head,null);
+        return head1;
+    }
+}
+time complexity = O(n)
+space complexity = O(n)
