@@ -1,0 +1,25 @@
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode temp=head;
+        int count=0;
+        while(temp!=null){
+           count++;
+           temp=temp.next;
+        }
+        int target=count-n; 
+        if(target==0){
+            head=head.next;
+            return head;
+        }
+        ListNode prev=head;
+        while(target>1){
+           prev=prev.next;
+           target--;
+        }
+        prev.next=prev.next.next;
+        return head;
+
+    }
+}
+time complexity=O(n)
+space complexity=O(1)
